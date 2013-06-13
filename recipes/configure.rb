@@ -23,5 +23,6 @@ end
 execute "Configure IDM" do
   command " \"#{idm_configure_build_loc}\" -DIA_USER_JRE_HOME=\"#{jre_loc}\" -DINSTALL_ONLY=true -i silent -f \"/tmp/idm_configure.properties\" " 
   creates "/tmp/idm_configure.log"
+  not_if { ::File.exists?("/tmp/idm_configure.log")}
   action :run
   end
